@@ -1,6 +1,6 @@
 import '../css/Form.css';
 import React from "react"
-import logo from '../logo.svg';
+import logo from '../assets/logo.png';
 import p1 from '../assets/1.png';
 import p2 from '../assets/2.png';
 import p3 from '../assets/3.png';

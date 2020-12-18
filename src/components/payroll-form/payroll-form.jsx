@@ -247,7 +247,8 @@ const PayrollForm = (props) => {
                     <div className="row">
                         <label className="label text" htmlFor="salary">Salary</label>
                         <input className="input" type="range" onChange={changeValue} id="salary" value={formValue.salary} name="salary" placeholder="Salary"
-                        min="1000" max="10000" step="100"/>
+                        min="100000" max="1000000" step="100" />
+                        <output className="salary-output text" htmlFor="salary">{formValue.salary}</output>
                     </div>
                     <div className="error" > {formValue.error.salary} </div>
 

@@ -2,7 +2,14 @@
 
 const axios = require('axios').default;
 class AxiosService {
-    postService(url = "", payload = null, tokenRequired = false, httpOptions = null) {
-        return axios.post(url, payload, tokenRequired && httpOptions);
+    postService(url, data) {
+        console.log("Axios call");
+        return axios({
+            method: 'post',
+            url: 'http://localhost:4000/employee',  
+            data: data
+        })
     }
 }
+
+module.exports = new AxiosService();

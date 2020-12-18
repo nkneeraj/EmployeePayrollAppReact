@@ -1,16 +1,22 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Form from './components/Form';
+import './App.css';
+import PayrollForm from './components/payroll-form/payroll-form'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
-  return (
-  <div><BrowserRouter>
-    <Switch>
-      <Route path={"/form"} component={Form}></Route>
-    </Switch>
-  </BrowserRouter>
-  </div>
-  )
+class App extends React.Component {
+  render() {
+    return (
+      <div className='App'>
+        <Router>
+          <Switch>
+            <Route path="/employee">
+              <PayrollForm />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

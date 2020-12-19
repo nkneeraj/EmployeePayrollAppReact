@@ -13,7 +13,7 @@ const Display = (props) => {
     const employeeService = new EmployeeService();
 
     const update = (employeeId) => {
-      props.history.push(`http://localhost:3000/employee/${employeeId}`);
+      props.history.push(`payroll-form/${employeeId}`);
     };
 
     const remove = (employeeId) => {

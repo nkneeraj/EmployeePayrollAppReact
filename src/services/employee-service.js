@@ -13,7 +13,7 @@ export default class  EmployeeService{
         }
 
         updateEmployee(data) {
-          return AxiosService.putService(`${this.baseUrl}employee/${data.id}`, data);
+          return AxiosService.putService(`${this.baseUrl}employee/update/${data.id}`, data);
         }
         getAllEmployee() {
           console.log("In getAllEmployee")
@@ -21,7 +21,7 @@ export default class  EmployeeService{
         }
         getEmployee(id) {
           console.log("In getEmployee by id")
-          return AxiosService.getService(`${this.baseUrl}employee/${id}`);
+          return AxiosService.getService(`${this.baseUrl}employee/get/${id}`);
         }
         deleteEmployee(id) {
           console.log("In emp delete")

@@ -1,53 +1,65 @@
 {
   "employee": [
     {
-      "name": "Mohit Mohit",
-      "departMent": [
-        "Engineer"
+      "name": "Amit",
+      "department": [
+        "Sales"
       ],
       "gender": "male",
-      "salary": "5000",
-      "startDate": "1 May 2020",
-      "notes": "",
-      "id": 1604589594368,
-      "profileUrl": "../../assets/profile-images/Ellipse -8.png"
+      "salary": "634400",
+      "startDate": "1 Jan 2020",
+      "notes": "Hello",
+      "id": 1604589594377,
+      "profile": "../../assets/2.png"
     },
     {
-      "name": "Parsiya",
-      "departMent": [
-        "HR",
+      "name": "Riya",
+      "department": [
+        "HR"
+      ],
+      "gender": "female",
+      "salary": "588200",
+      "startDate": "1 Jan 2020",
+      "notes": "Hye",
+      "id": 1604589594378,
+      "profile": "../../assets/1.png"
+    },
+    {
+      "name": "Rajan",
+      "department": [
+        "Sales"
+      ],
+      "gender": "male",
+      "salary": "369800",
+      "startDate": "1 Jan 2020",
+      "notes": "",
+      "id": 1604589594379,
+      "profile": "../../assets/3.png"
+    },
+    {
+      "name": "Pallavi",
+      "department": [
+        "Engineer"
+      ],
+      "gender": "female",
+      "salary": "730200",
+      "startDate": "1 Jan 2020",
+      "notes": "",
+      "id": 1604589594380,
+      "profile": "../../assets/4.png"
+    },
+    {
+      "name": "Aniket",
+      "department": [
+        "Sales",
         "Finance"
       ],
       "gender": "male",
-      "salary": "40000",
-      "startDate": "1 Oct 2017",
-      "notes": "Test",
-      "id": 1604589594369,
-      "profileUrl": "../../assets/profile-images/Ellipse-8.png"
-    },
-    {
-      "name": "Neeraj",
-      "department": [
-        "HR"
-      ],
-      "gender": "male",
-      "salary": "397500",
+      "salary": "804500",
       "startDate": "1 Jan 2020",
-      "notes": "Hello",
-      "id": 1604589594370,
-      "profile": "../../assets/profile-images/Ellipse -3.png"
-    },
-    {
-      "name": "Neeraj Kumar",
-      "department": [
-        "HR"
-      ],
-      "gender": "male",
-      "salary": "390600",
-      "startDate": "1 Jan 2020",
-      "notes": "Hello",
-      "id": 1604589594371,
-      "profile": "../../assets/profile-images/Ellipse -3.png"
+      "notes": "ok",
+      "id": 1604589594381,
+      "profile": "../../assets/3.png"
     }
   ]
 }

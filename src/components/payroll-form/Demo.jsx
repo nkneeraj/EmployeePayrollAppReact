@@ -47,5 +47,5 @@ class Demo extends React.Component {
             </div>
         )
     }
-}
+    
 export default Demo;

@@ -6,7 +6,7 @@ import EmployeeService from "../../services/employee-service"
 import Display from "../display/display"
 import logo from "../../assets/logo.png"
 import { Link } from "react-router-dom";
-import PayrollForm from  "../payroll-form/payroll-form.jsx";
+import PayrollForm from "../payroll-form/payroll-form.jsx";
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -56,14 +56,14 @@ export default class Home extends React.Component {
     return (
       <div>
         <header className='header row center'>
-                <div className="logo">
-                    <img src={logo} alt="" />
-                    <div>
-                        <span className="emp-text">EMPLOYEE</span> <br />
-                        <span className="emp-text emp-payroll">PAYROLL</span>
-                    </div>
-                </div>
-            </header>
+          <div className="logo">
+            <img src={logo} alt="" />
+            <div>
+              <span className="emp-text">EMPLOYEE</span> <br />
+              <span className="emp-text emp-payroll">PAYROLL</span>
+            </div>
+          </div>
+        </header>
         <div className="column content">
           <div className="emp-detail">
             <div className="detail-text">
@@ -80,12 +80,12 @@ export default class Home extends React.Component {
                   placeholder=""
                 />
                 <img className="search-icon" src={searchIcon} alt="Search" />
-                </div>
-                <div>
-                <a href = "http://localhost:3000/employee">
-                    < img className="add-button flex-row-center" src={addIcon} alt="Add User"></ img>
-                    </a>               
-            </div>
+              </div>
+              <div>
+                <a href="http://localhost:3000/employee">
+                  < img className="add-button flex-row-center" src={addIcon} alt="Add User"></ img>
+                </a>
+              </div>
             </div>
           </div>
           <div className="table-main">

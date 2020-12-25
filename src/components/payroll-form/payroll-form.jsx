@@ -47,44 +47,44 @@ const PayrollForm = (props) => {
 
     useEffect(() => {
         if (params.id) {
-          getDataById(params.id);
+            getDataById(params.id);
         }
-      }, []);
+    }, []);
 
-      const getDataById = (id) => {
+    const getDataById = (id) => {
         employeeService
-          .getEmployee(id)
-          .then((data) => {
-            console.log("data is ", data.data);
-            let obj = data.data;
-            setData(obj);
-          })
-          .catch((err) => {
-            console.log("err is ", err);
-          });
-      };
+            .getEmployee(id)
+            .then((data) => {
+                console.log("data is ", data.data);
+                let obj = data.data;
+                setData(obj);
+            })
+            .catch((err) => {
+                console.log("err is ", err);
+            });
+    };
 
     const setData = (obj) => {
         let array = obj.startDate.split(" ");
         setForm({
-          ...formValue,
-          ...obj,
-          profileUrl: obj.profile,
-          departMentValue: obj.department,
-          isUpdate: true,
-          day: array[0],
-          month: array[1],
-          year: array[2],
+            ...formValue,
+            ...obj,
+            profileUrl: obj.profile,
+            departMentValue: obj.department,
+            isUpdate: true,
+            day: array[0],
+            month: array[1],
+            year: array[2],
         });
-      };
-  
+    };
+
     const changeValue = (event) => {
         setForm({ ...formValue, [event.target.name]: event.target.value })
     }
 
     const onCheckChange = (name) => {
         let index = formValue.departMentValue.indexOf(name);
-       
+
         let checkArray = [...formValue.departMentValue]
         if (index > -1)
             checkArray.splice(index, 1)
@@ -132,43 +132,49 @@ const PayrollForm = (props) => {
     }
 
     const save = async (event) => {
-        event.preventDefault();
-        if(await validData()){
-            console.log("error", formValue);
-            return;
+        let result = window.confirm("Do you want to add new Employee data?")
+        if (result) {
+            event.preventDefault();
+            if (await validData()) {
+                console.log("error", formValue);
+                return;
+            }
+            let object = {
+                name: formValue.name,
+                department: formValue.departMentValue,
+                gender: formValue.gender,
+                salary: formValue.salary,
+                startDate: `${formValue.day} ${formValue.month} ${formValue.year}`,
+                notes: formValue.notes,
+                id: formValue.id,
+                profile: formValue.profileUrl,
+            };
+            if (formValue.isUpdate) {
+                employeeService
+                    .updateEmployee(object)
+                    .then((data) => {
+                        console.log("data after update", data);
+                        props.history.push("");
+                    })
+                    .catch((err) => {
+                        console.log("Error after update");
+                    });
+            } else {
+                employeeService
+                    .addEmployee(object)
+                    .then((data) => {
+                        console.log("Employee payroll added");
+                        props.history.push("");
+                    })
+                    .catch((err) => {
+                        console.log("error occured while adding employee");
+                    });
+            }
         }
-        let object = {
-          name: formValue.name,
-          department: formValue.departMentValue,
-          gender: formValue.gender,
-          salary: formValue.salary,
-          startDate: `${formValue.day} ${formValue.month} ${formValue.year}`,
-          notes: formValue.notes,
-          id: formValue.id,
-          profile: formValue.profileUrl,
-        };
-        if (formValue.isUpdate) {
-            employeeService
-              .updateEmployee(object)
-              .then((data) => {
-                console.log("data after update", data);
-                props.history.push("");
-              })
-              .catch((err) => {
-                console.log("Error after update");
-              });
-          } else {
-            employeeService
-              .addEmployee(object)
-              .then((data) => {
-                console.log("Employee payroll added");
-                props.history.push("");
-              })
-              .catch((err) => {
-                console.log("error occured while adding employee");
-              });
-          }
-        };
+        else{
+            window.location.reload();
+        }
+    };
     const reset = () => {
         setForm({ ...initialValue, id: formValue.id, isUpdate: formValue.isUpdate });
 
@@ -191,14 +197,17 @@ const PayrollForm = (props) => {
                     <div className="form-head">Employee Payroll form</div>
                     <div className="row">
                         <label className="label text" htmlFor="name">Name</label>
-                        <input className="input" type="text" id="name" name="name" value={formValue.name} onChange={changeValue} placeholder="Your name.." />
+                        <input className="input" type="text" id="name" name="name" value={formValue.name} onChange={changeValue} placeholder="Your name.." required />
                     </div>
                     <div className="error" > {formValue.error.name} </div>
                     <div className="row">
                         <label className="label text" htmlFor="profileUrl">Profile image</label>
                         <div className="profile-radio-button">
                             <label >
-                                <input type="radio" checked={formValue.profileUrl === '../../assets/1.png'} name="profileUrl" value="../../assets/1.png" onChange={changeValue} />
+                                <input type="radio"
+                                    checked={formValue.profileUrl === '../../assets/1.png'}
+                                    name="profileUrl" value="../../assets/1.png"
+                                    onChange={changeValue} />
                                 <img className="profile" src={profile1} alt="profile" />
                             </label>
                             <label >
@@ -247,7 +256,7 @@ const PayrollForm = (props) => {
                     <div className="row">
                         <label className="label text" htmlFor="salary">Salary</label>
                         <input className="input" type="range" onChange={changeValue} id="salary" value={formValue.salary} name="salary" placeholder="Salary"
-                        min="100000" max="1000000" step="100" />
+                            min="100000" max="1000000" step="50000" />
                         <output className="salary-output text" htmlFor="salary">{formValue.salary}</output>
                     </div>
                     <div className="error" > {formValue.error.salary} </div>

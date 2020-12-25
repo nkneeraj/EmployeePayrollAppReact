@@ -107,24 +107,24 @@ const PayrollForm = (props) => {
             startDate: ''
         }
         if (formValue.name.length < 1) {
-            error.name = 'name is required field'
+            error.name = 'Please enter you Name.*'
             isError = true;
         }
         if (formValue.gender.length < 1) {
-            error.gender = 'gender is required field'
+            error.gender = 'Please select your Gender.*'
             isError = true;
         }
         if (formValue.salary.length < 1) {
-            error.salary = 'salary is required field'
+            error.salary = 'Please select your Salary using slide bar.*'
             isError = true;
         }
         if (formValue.profileUrl.length < 1) {
-            error.profileUrl = 'profile is required field'
+            error.profileUrl = 'Please select your Profile-Image.*'
             isError = true;
         }
 
         if (formValue.departMentValue.length < 1) {
-            error.department = 'department is required field'
+            error.department = 'Please select your Department name.*'
             isError = true;
         }
         await setForm({ ...formValue, error: error })
@@ -177,7 +177,6 @@ const PayrollForm = (props) => {
     };
     const reset = () => {
         setForm({ ...initialValue, id: formValue.id, isUpdate: formValue.isUpdate });
-
         console.log(formValue);
     }
     return (

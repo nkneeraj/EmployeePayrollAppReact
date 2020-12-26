@@ -5,8 +5,6 @@ import "./home.scss";
 import EmployeeService from "../../services/employee-service"
 import Display from "../display/display"
 import logo from "../../assets/logo.png"
-import { Link } from "react-router-dom";
-import PayrollForm from "../payroll-form/payroll-form.jsx";
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -48,7 +46,6 @@ export default class Home extends React.Component {
         (element) =>
           element.name.toLowerCase().indexOf(search.toLowerCase()) > -1
       );
-
     this.setState({ employeeArray: empArray });
   };
 

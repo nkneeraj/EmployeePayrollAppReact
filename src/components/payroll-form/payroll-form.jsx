@@ -218,10 +218,7 @@ const PayrollForm = (props) => {
                         <label className="label text" htmlFor="profileUrl">Profile image</label>
                         <div className="profile-radio-button">
                             <label >
-                                <input type="radio"
-                                    checked={formValue.profileUrl === '../../assets/1.png'}
-                                    name="profileUrl" value="../../assets/1.png"
-                                    onChange={changeValue} />
+                                <input type="radio" checked={formValue.profileUrl === '../../assets/1.png'} name="profileUrl" value="../../assets/1.png" onChange={changeValue} />
                                 <img className="profile" src={profile1} alt="profile" />
                             </label>
                             <label >

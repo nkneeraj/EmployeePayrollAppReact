@@ -106,8 +106,8 @@ const PayrollForm = (props) => {
             profileUrl: '',
             startDate: ''
         }
-        if (formValue.name.length < 1) {
-            error.name = 'Please enter you Name.*'
+        if (!formValue.name.match('^[A-Z]{1}[a-z A-Z //s]{2,}')) {
+            error.name = 'Name should start character capital having min length of 3. Eg: Neeraj Kumar*'
             isError = true;
         }
         if (formValue.gender.length < 1) {
@@ -122,11 +122,27 @@ const PayrollForm = (props) => {
             error.profileUrl = 'Please select your Profile-Image.*'
             isError = true;
         }
-
         if (formValue.departMentValue.length < 1) {
             error.department = 'Please select your Department name.*'
             isError = true;
         }
+        let enteredDate = new Date(formValue.day+ " " + formValue.month + " " + formValue.year)
+        let currentDate = new Date();
+        let dateDifference = Math.ceil((currentDate-enteredDate))/(1000*60*60*24);
+        let currentDateFormat = currentDate.getDate() + "-" + (currentDate.getMonth()+1) + "-" + currentDate.getFullYear();
+        let priorDate = new Date(); 
+        priorDate.setDate(priorDate.getDate() - 30);
+        let priorDateFormat = priorDate.getDate() + "-" + (priorDate.getMonth()+1) + "-" + priorDate.getFullYear();
+
+        if( dateDifference > 30){
+            error.startDate = "Date should be between " + priorDateFormat + " and " + currentDateFormat;
+            isError = true;
+        }
+        if( dateDifference < 0){
+            error.startDate = "Date can not exceed present date."
+            isError = true;
+        }
+    
         await setForm({ ...formValue, error: error })
         return isError;
     }
@@ -181,7 +197,6 @@ const PayrollForm = (props) => {
     }
     return (
         <div className="payroll-main">
-
             <header className='header row center'>
                 <div className="logo">
                     <img src={logo} alt="" />
